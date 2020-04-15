@@ -1,1 +1,1 @@
-# oredr-payment-bot-telegram
+# order-payment-bot-telegram
