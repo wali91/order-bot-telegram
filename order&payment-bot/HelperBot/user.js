@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const axios = require("axios");
+const request = require('request')
 
 const API_URL = process.env.API_URL
 const Customer = 'api/customer/'
