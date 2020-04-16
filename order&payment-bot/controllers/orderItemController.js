@@ -1,53 +1,52 @@
-const { orderitem } = require("../database/models");
+ 
+const { OrderItem } = require('../database/models');
 
 // Create and Save a new OrderItem
 exports.create = (req, res) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
-      message: "Data can not be empty!",
+      message: "Data can not be empty!"
     });
     return;
   }
 
   // Create a OrderItem
-  const orderitem1 = {
-    quantity: req.body.data.attributes.quantity,
+  const orderitem = {
+    quantity: req.body.data.attributes.quantity
   };
 
   // Save OrderItem in the database
-  orderitem
-    .create(orderitem1)
-    .then((data) => {
+  OrderItem.create(orderitem)
+    .then(data => {
       res.send({
         message: "success retrieve data",
-        status: true,
-        data: data,
+				status: true,
+				data: data
       });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the OrderItem.",
+          err.message || "Some error occurred while creating the OrderItem."
       });
     });
 };
 
 // Retrieve all OrderItems from the database.
 exports.findAll = (req, res) => {
-  orderitem
-    .findAll()
-    .then((data) => {
+  OrderItem.findAll()
+    .then(data => {
       res.send({
         message: "success retrieve data",
-        status: true,
-        data: data,
+				status: true,
+				data: data
       });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving orderitems.",
+          err.message || "Some error occurred while retrieving orderitems."
       });
     });
 };
@@ -56,18 +55,17 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  orderitem
-    .findByPk(id)
-    .then((data) => {
+  OrderItem.findByPk(id)
+    .then(data => {
       res.send({
         message: "success retrieve data",
-        status: true,
-        data: data,
+				status: true,
+				data: data
       });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({
-        message: "Error retrieving OrderItem with id=" + id,
+        message: "Error retrieving OrderItem with id=" + id
       });
     });
 };
@@ -76,24 +74,23 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  orderitem
-    .update(req.body.data.attributes, {
-      where: { id: id },
-    })
-    .then((num) => {
+  OrderItem.update(req.body.data.attributes, {
+    where: { id: id }
+  })
+    .then(num => {
       if (num == 1) {
         res.send({
-          message: "OrderItem was updated successfully.",
+          message: "OrderItem was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update OrderItem with id=${id}. Maybe OrderItem was not found or req.body is empty!`,
+          message: `Cannot update OrderItem with id=${id}. Maybe OrderItem was not found or req.body is empty!`
         });
       }
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({
-        message: "Error updating OrderItem with id=" + id,
+        message: "Error updating OrderItem with id=" + id
       });
     });
 };
@@ -102,24 +99,23 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  orderitem
-    .destroy({
-      where: { id: id },
-    })
-    .then((num) => {
+  OrderItem.destroy({
+    where: { id: id }
+  })
+    .then(num => {
       if (num == 1) {
         res.send({
-          message: "OrderItem was deleted successfully!",
+          message: "OrderItem was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete OrderItem with id=${id}. Maybe OrderItem was not found!`,
+          message: `Cannot delete OrderItem with id=${id}. Maybe OrderItem was not found!`
         });
       }
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({
-        message: "Could not delete OrderItem with id=" + id,
+        message: "Could not delete OrderItem with id=" + id
       });
     });
 };

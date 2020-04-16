@@ -2,17 +2,17 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-		return queryInterface.bulkInsert('drivers', 
+		return queryInterface.bulkInsert('Drivers', 
 			[
 				{
-					full_name: 'Ronaldo gonzalfes',
-					phone_number: '0831204856',
+					full_name: 'lando Silalahi',
+					phone_number: '08135557000',
 					createdAt: new Date(),
 					updatedAt: new Date()
 				},
 				{
-					full_name: 'Abdul Rahman',
-					phone_number: '08512305698',
+					full_name: 'Agus Salim',
+					phone_number: '08185598189',
 					createdAt: new Date(),
           updatedAt: new Date()
 				}
@@ -20,6 +20,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('drivers', null, {});
+    return queryInterface.bulkDelete('Drivers', null, {});
   }
 };

@@ -1,10 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Customer = sequelize.define('Customer', {
-    full_name: DataTypes.STRING,
-    username: {type: DataTypes.STRING, unique: true, allowNull: false},
-		email: {type: DataTypes.STRING, unique: true, allowNull: false},
-    phone_number: DataTypes.STRING
+		id: {type: DataTypes.INTEGER, allowNull: false, primaryKey: true},
+    full_name: {type: DataTypes.STRING, allowNull: false},
+    username: {type: DataTypes.STRING, allowNull: false},
+		email: {type: DataTypes.STRING, allowNull: false},
+    phone_number: {type: DataTypes.STRING, unique: true, allowNull: false}
   }, {});
   Customer.associate = function(models) {
     Customer.hasMany(models.Order, {
