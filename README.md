@@ -12,6 +12,7 @@
 <blockquote> DATABASE_NAME = customer </blockquote>
 
 ![Screenshot from 2020-04-17 04-33-39](https://user-images.githubusercontent.com/53268679/79511409-715c0980-8069-11ea-8eff-18f3d9e5e176.png)
+<br>
 
 ![Screenshot from 2020-04-17 05-09-42](https://user-images.githubusercontent.com/53268679/79511554-b54f0e80-8069-11ea-9a69-8991f49350ad.png)
 
