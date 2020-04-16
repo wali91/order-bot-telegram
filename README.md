@@ -11,4 +11,4 @@
 <blockquote> .DATABASE_USER = root </blockquote>
 <blockquote> DATABASE_NAME = customer </blockquote>
 
-![/start](file:///home/wali/Pictures/Screenshot%20from%202020-04-17%2004-33-39.png)
+![Screenshot from 2020-04-17 04-33-39](https://user-images.githubusercontent.com/53268679/79511409-715c0980-8069-11ea-8eff-18f3d9e5e176.png)
