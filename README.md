@@ -11,4 +11,4 @@
 <blockquote> .DATABASE_USER = root </blockquote>
 <blockquote> DATABASE_NAME = customer </blockquote>
 
-![alt text](file:///home/wali/Pictures/Screenshot%20from%202020-04-17%2004-33-39.png)
+![alt](file:///home/wali/Pictures/Screenshot%20from%202020-04-17%2004-33-39.png)
