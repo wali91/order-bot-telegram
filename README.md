@@ -10,3 +10,5 @@
 <blockquote> DATABASE_HOST = 127.0.0.1 </blockquote>
 <blockquote> .DATABASE_USER = root </blockquote>
 <blockquote> DATABASE_NAME = customer </blockquote>
+
+file:///home/wali/Pictures/Screenshot%20from%202020-04-17%2004-33-39.png
