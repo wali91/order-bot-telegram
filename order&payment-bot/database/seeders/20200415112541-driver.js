@@ -5,16 +5,16 @@ module.exports = {
 		return queryInterface.bulkInsert('Drivers', 
 			[
 				{
-					full_name: 'lando Silalahi',
-					phone_number: '08135557000',
+					full_name: 'Ronaldo gonzalfes',
+					phone_number: '0831204856',
 					createdAt: new Date(),
 					updatedAt: new Date()
 				},
 				{
-					full_name: 'Agus Salim',
-					phone_number: '08185598189',
+					full_name: 'Abdul Rahman',
+					phone_number: '08512305698',
 					createdAt: new Date(),
-          updatedAt: new Date()
+					updatedAt: new Date()
 				}
 			], {});
   },

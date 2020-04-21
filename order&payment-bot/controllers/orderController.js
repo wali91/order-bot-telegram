@@ -1,25 +1,27 @@
-const { Order, OrderItem } = require('../database/models');
+const { Order, OrderItem } = require("../database/models");
 
 // Create and Save a new Order
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.data) {
+  if (!req.body) {
     res.status(400).send({
-      message: "Data can not be empty!"
+      message: "Data can not be empty!",
     });
-		return;
+    return;
   }
-	
-	// Create an Order
+
+  // Create a Order
   const order = {
     user_id: req.body.data.attributes.user_id,
     driver_id: req.body.data.attributes.driver_id,
-		status: req.body.data.attributes.status,
-		order_detail: req.body.data.attributes.order_detail
+    status: req.body.data.attributes.status,
+    order_detail: req.body.data.attributes.order_detail
   };
+  const items = req.body.data.attributes.order_detail;
 
   // Save Order in the database
-  Order.create(req.body.data.attributes, {
+  Order
+  .create(req.body.data.attributes, {
 		include: [{
 			model: OrderItem,
 			as: 'order_detail',
@@ -43,31 +45,31 @@ exports.create = (req, res) => {
 
 // Retrieve all Orders from the database.
 exports.findAll = (req, res) => {
-  Order.findAll({
-		include: [
-			{
-					model: OrderItem,
-					as: 'order_detail',
-					attributes: {
-						exclude: ['id', 'order_id']
-					}
-			},
-		],
-		attributes: {
-			exclude: ['createdAt', 'updatedAt']
-		}
-	})
-    .then(data => {
+  Order
+    .findAll({
+      include: [
+        {
+          model: OrderItem,
+          as: "order_detail",
+          attributes: {
+            exclude: ["id", "order_id"],
+          },
+        },
+      ],
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    })
+    .then((data) => {
       res.send({
         message: "success retrieve data",
-				status: true,
-				data: data
+        status: true,
+        data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving orders."
+        message: err.message || "Some error occurred while retrieving orders.",
       });
     });
 };
@@ -76,30 +78,31 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Order.findByPk(id, {
-		include: [
-			{
-					model: OrderItem,
-					as: 'order_detail',
-					attributes: {
-						exclude: ['id', 'order_id']
-					}
-			},
-		],
-		attributes: {
-			exclude: ['createdAt', 'updatedAt']
-		}
-	})
-    .then(data => {
+  Order
+    .findByPk(id, {
+      include: [
+        {
+          model: OrderItem,
+          as: "order_detail",
+          attributes: {
+            exclude: ["id", "order_id"],
+          },
+        },
+      ],
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    })
+    .then((data) => {
       res.send({
         message: "success retrieve data",
-				status: true,
-				data: data
+        status: true,
+        data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Order with id=" + id
+        message: "Error retrieving Order with id=" + id,
       });
     });
 };
@@ -108,23 +111,24 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Order.update(req.body.data.attributes, {
-    where: { id: id }
-  })
-    .then(num => {
+  Order
+    .update(req.body.data.attributes, {
+      where: { id: id },
+    })
+    .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Order was updated successfully."
+          message: "Order was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update Order with id=${id}. Maybe Order was not found or req.body is empty!`
+          message: `Cannot update Order with id=${id}. Maybe Order was not found or req.body is empty!`,
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Error updating Order with id=" + id
+        message: "Error updating Order with id=" + id,
       });
     });
 };
@@ -133,23 +137,24 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Order.destroy({
-    where: { id: id }
-  })
-    .then(num => {
+  Order
+    .destroy({
+      where: { id: id },
+    })
+    .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Order was deleted successfully!"
+          message: "Order was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete Order with id=${id}. Maybe Order was not found!`
+          message: `Cannot delete Order with id=${id}. Maybe Order was not found!`,
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Could not delete Order with id=" + id
+        message: "Could not delete Order with id=" + id,
       });
     });
 };

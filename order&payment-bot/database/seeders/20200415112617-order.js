@@ -16,7 +16,7 @@ module.exports = {
 					status: 'sending',
 					driver_id: 1,
 					createdAt: new Date(),
-          updatedAt: new Date()
+					updatedAt: new Date()
 				}
 			], {});
   },

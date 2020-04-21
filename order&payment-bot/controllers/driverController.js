@@ -1,11 +1,11 @@
-const { Driver } = require('../database/models');
+const { Driver } = require("../database/models");
 
 // Create and Save a new Driver
 exports.create = (req, res) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
-      message: "Data can not be empty!"
+      message: "Data can not be empty!",
     });
     return;
   }
@@ -17,40 +17,42 @@ exports.create = (req, res) => {
   };
 
   // Save Driver in the database
-  Driver.create(driver)
-    .then(data => {
+  Driver
+    .create(driver)
+    .then((data) => {
       res.send({
         message: "success retrieve data",
-				status: true,
-				data: data
+        status: true,
+        data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Driver."
+          err.message || "Some error occurred while creating the Driver.",
       });
     });
 };
 
 // Retrieve all Drivers from the database.
 exports.findAll = (req, res) => {
-  Driver.findAll({
-		attributes: {
-			exclude: ['createdAt', 'updatedAt']
-		}
-	})
-    .then(data => {
+  Driver
+    .findAll({
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    })
+    .then((data) => {
       res.send({
         message: "success retrieve data",
-				status: true,
-				data: data
+        status: true,
+        data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving tutorials.",
       });
     });
 };
@@ -59,21 +61,22 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Driver.findByPk(id, {
-		attributes: {
-			exclude: ['createdAt', 'updatedAt']
-		}
-	})
-    .then(data => {
+  Driver
+    .findByPk(id, {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    })
+    .then((data) => {
       res.send({
         message: "success retrieve data",
-				status: true,
-				data: data
+        status: true,
+        data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Driver with id=" + id
+        message: "Error retrieving Driver with id=" + id,
       });
     });
 };
@@ -82,23 +85,24 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Driver.update(req.body.data.attributes, {
-    where: { id: id }
-  })
-    .then(num => {
+  Driver
+    .update(req.body.data.attributes, {
+      where: { id: id },
+    })
+    .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Driver was updated successfully."
+          message: "Driver was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update Driver with id=${id}. Maybe Driver was not found or req.body is empty!`
+          message: `Cannot update Driver with id=${id}. Maybe Driver was not found or req.body is empty!`,
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Error updating Driver with id=" + id
+        message: "Error updating Driver with id=" + id,
       });
     });
 };
@@ -107,23 +111,24 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Driver.destroy({
-    where: { id: id }
-  })
-    .then(num => {
+  Driver
+    .destroy({
+      where: { id: id },
+    })
+    .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Driver was deleted successfully!"
+          message: "Driver was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete Driver with id=${id}. Maybe Driver was not found!`
+          message: `Cannot delete Driver with id=${id}. Maybe Driver was not found!`,
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Could not delete Driver with id=" + id
+        message: "Could not delete Driver with id=" + id,
       });
     });
 };
