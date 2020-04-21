@@ -1,4 +1,3 @@
 node_modules
 .env
 order_online.sqlite3
-bin
