@@ -2,8 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     user_id: DataTypes.INTEGER,
-	status: {type: DataTypes.ENUM('accepted', 'sending', 'done', 'failure'),allowNull:false},
-	driver_id: DataTypes.INTEGER
+    status: {type: DataTypes.ENUM('accepted', 'sending', 'done', 'failure'),allowNull:false},
+    driver_id: DataTypes.INTEGER
   }, {});
   Order.associate = function(models) {
 		Order.hasMany(models.OrderItem, {
