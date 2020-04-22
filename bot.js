@@ -1,6 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api')
 
-const bot = new TelegramBot('1166428491:AAGkGsgq-Goof3DQwvTVXPUSpeamQ0D6tzk',{ polling: true})
+const bot = new TelegramBot('1076941476:AAHqzR4dg6Uc3BjDihpiK6EnOfTpvWTe4I4',{ polling: true})
 
 const user = require('./HelperBot/user')
 
